@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设置 · 考研智复习</title>
+<link rel="stylesheet" href="themes.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    padding: 32px 20px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 24px; margin-bottom: 4px; }
+  .sub { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
+  .card {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  .card h2 { font-size: 17px; margin-bottom: 16px; }
+  label { display: block; font-size: 13px; color: var(--text-secondary); margin: 12px 0 6px; }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-input);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  input:focus, select:focus { outline: 2px solid var(--brand-primary); border-color: transparent; }
+  .row { display: flex; gap: 12px; }
+  .row > div { flex: 1; }
+  .btn {
+    display: inline-block;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-primary { background: var(--brand-primary); color: var(--text-on-brand); }
+  .btn-success { background: var(--success); color: var(--text-on-brand); }
+  .btn-ghost { background: var(--bg-hover); color: var(--text-secondary); }
+  .status { margin-top: 10px; font-size: 13px; }
+  .status.ok { color: var(--success); }
+  .status.err { color: var(--danger); }
+  .status.wait { color: var(--warning); }
+  .tip {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--warning-text);
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+  .tip strong { display: block; margin-bottom: 6px; color: var(--warning-text); }
+  .steps { font-size: 13px; line-height: 2; color: var(--text-secondary); }
+  .steps code { background: var(--bg-hover); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .saved { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--success); color: var(--text-on-brand); padding: 10px 24px; border-radius: 8px;
+    font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+  .saved.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>⚙️ 设置</h1>
+  <div class="sub">考研智复习 · AI刷题助手 <span id="versionBadge" style="background:var(--bg-hover);border-radius:6px;padding:2px 8px;font-size:12px;color:var(--text-secondary);">v1.0.0</span></div>
+
+  <div class="card">
+    <h2>🔑 DeepSeek API Key 配置</h2>
+    <div class="steps" id="apiSteps">
+      <strong>第一步：获取 API Key（约 2 分钟）</strong>
+      1. 访问 <b>platform.deepseek.com</b>，登录或注册账号<br>
+      2. 左侧导航栏选择「API Keys」→ 点击「创建 API Key」<br>
+      3. 输入名称（如"考研复习插件"）→ 点击创建<br>
+      4. <b>立即复制保存</b>生成的 Key（格式 sk-xxxx）——关闭弹窗后就看不到了<br>
+      5. 如遗失只能删除重建；建议设置消费上限，避免意外费用
+    </div>
+    <label for="apiKey">API Key（粘贴到这里）</label>
+    <div class="row">
+      <div style="flex:3"><input type="password" id="apiKey" placeholder="sk-xxxxxxxxxxxxxxxx" autocomplete="off"></div>
+      <div style="flex:1"><button class="btn btn-ghost" id="toggleKey">显示</button></div>
+    </div>
+    <label for="apiBaseUrl">API 地址</label>
+    <input type="text" id="apiBaseUrl" placeholder="https://api.deepseek.com">
+    <label for="model">模型</label>
+    <select id="model">
+      <option value="deepseek-chat">deepseek-chat（推荐）</option>
+      <option value="deepseek-reasoner">deepseek-reasoner</option>
+      <option value="deepseek-v4-flash">deepseek-v4-flash</option>
+    </select>
+    <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn btn-primary" id="saveKey">💾 保存</button>
+      <button class="btn btn-success" id="testKey">🔌 测试连接</button>
+      <button class="btn btn-ghost" id="openApp">🚀 进入学习页</button>
+    </div>
+    <div class="status" id="keyStatus"></div>
+    <div class="tip">
+      <strong>⚠️ 安全提醒</strong>
+      API Key 是你账户的"通行证"，不要分享给任何人、不要截图发到网上。
+      建议设置消费上限；可在设置中随时清除。Key 仅保存在浏览器本地，不会上传到任何服务器。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 备考目标</h2>
+    <div class="row">
+      <div><label for="targetUniversity">目标院校</label><input type="text" id="targetUniversity"></div>
+      <div><label for="majorSubject">专业课</label><input type="text" id="majorSubject"></div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="mathType">数学类型</label>
+        <select id="mathType">
+          <option value="数学一">数学一</option>
+          <option value="数学二">数学二</option>
+          <option value="数学三">数学三</option>
+        </select>
+      </div>
+      <div>
+        <label for="englishType">英语类型</label>
+        <select id="englishType">
+          <option value="英语一">英语一</option>
+          <option value="英语二">英语二</option>
+        </select>
+      </div>
+    </div>
+    <div id="mathEnglishLink" style="font-size:12.5px; color:var(--brand-primary); margin-top:8px;"></div>
+    <div class="row" style="margin-top:12px;">
+      <div style="flex:3">
+        <label for="dailyGoal">每日目标题数</label>
+        <input type="number" id="dailyGoal" min="1" max="100">
+      </div>
+      <div style="flex:1; display:flex; align-items:flex-end; padding-bottom:4px;">
+        <label style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text-secondary); cursor:pointer;">
+          <input type="checkbox" id="politics" style="width:auto;"> 🏛️ 考政治
+        </label>
+      </div>
+    </div>
+    <div id="aiKeyWarning" style="display:none; margin-top:12px; background:var(--warning-bg); border:1px solid var(--warning-border); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--warning-text);">
+      ⚠️ 未连接 API Key，数学/英语/政治的章节框架暂不可用。请先在顶部配置 DeepSeek API Key，章节将自动由 AI 生成。
+    </div>
+    <div style="margin-top:16px;">
+      <button class="btn btn-primary" id="saveGoal">💾 保存备考目标</button>
+    </div>
+    <div id="majorInitMsg" style="margin-top:10px; font-size:13px; color:var(--text-muted); min-height:20px;"></div>
+  </div>
+
+  <div class="card">
+    <h2>🎨 外观</h2>
+    <p class="fs-13 text-muted mb-12">选择界面主题。跟随系统 = 自动匹配你操作系统的浅色/深色。</p>
+    <label for="themePref" class="fs-13 text-secondary mb-6" style="display:block;">主题</label>
+    <select id="themePref">
+      <option value="system">🌓 跟随系统（推荐）</option>
+      <option value="light">☀️ 浅色</option>
+      <option value="dark">🌙 深色</option>
+    </select>
+    <div style="margin-top:16px;">
+      <button class="btn btn-primary" id="saveTheme">💾 保存主题</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📚 学习数据</h2>
+    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">所有数据仅存储在你的浏览器本地。</p>
+    <div style="display:flex; gap:12px;">
+      <button class="btn btn-ghost" id="exportData">📤 导出数据</button>
+      <button class="btn btn-ghost" id="clearData" style="color:var(--danger);">🗑️ 清空数据</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🛡️ 隐私与合规</h2>
+    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">我们遵循数据本地优先原则：除 AI 调用外不上传任何数据。AI 调用会做基础敏感词过滤，使用日志仅含元数据。</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn btn-ghost" id="viewPrivacy">🔒 查看隐私政策</button>
+      <button class="btn btn-ghost" id="viewWhatsNew">🔄 更新日志</button>
+      <button class="btn btn-ghost" id="viewLog">📄 查看使用日志</button>
+      <button class="btn btn-ghost" id="clearLog" style="color:var(--danger);">🧹 清空日志</button>
+    </div>
+    <div id="logArea" style="display:none; margin-top:14px; max-height:200px; overflow:auto; background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; padding:10px; font-size:12px;"></div>
+  </div>
+</div>
+  <div class="brand-footer">
+    Powered by <a href="https://clawsjoy.com" target="_blank" rel="noopener">ClawsJoy</a><span class="dot">·</span><a href="https://clawsjoy.com" target="_blank" rel="noopener">clawsjoy.com</a><span class="dot">·</span>v1.0.0
+  </div>
+<div class="saved" id="saved">✓ 已保存</div>
+<script type="module" src="options.js"></script>
+</body>
+</html>

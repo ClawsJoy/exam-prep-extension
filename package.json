@@ -1,0 +1,15 @@
+{
+  "name": "exam-prep-extension",
+  "version": "1.0.0",
+  "description": "AI 考研复习助手浏览器插件（路线C：独立工具共存版）",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/chrome": "^0.0.260"
+  },
+  "type": "module"
+}

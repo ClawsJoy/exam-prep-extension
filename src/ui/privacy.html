@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隐私政策 · 考研智复习</title>
+<link rel="stylesheet" href="themes.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg-body); color: var(--text-primary); padding: 32px 20px; }
+  .container { max-width: 760px; margin: 0 auto; background: var(--bg-card); border-radius: 14px; padding: 36px 40px; box-shadow: 0 2px 8px rgba(0,0,0,.06); border: 1px solid var(--border); }
+  h1 { font-size: 24px; margin-bottom: 6px; }
+  .meta { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  h2 { font-size: 17px; margin: 24px 0 10px; color: var(--brand-dark); }
+  p, li { font-size: 14px; line-height: 1.8; color: var(--text-secondary); }
+  ul { padding-left: 20px; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+  th { background: var(--info-bg); }
+  .back { display: inline-block; margin-top: 24px; color: var(--brand-primary); text-decoration: none; font-size: 14px; }
+  .back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔒 隐私政策</h1>
+  <div class="meta">生效日期：2026-08-16 · 考研智复习 · AI刷题助手</div>
+  <p>本插件遵循<strong>数据本地优先（Local-first）</strong>设计：除调用你主动配置的 AI 服务外，不向任何服务器上传你的数据。</p>
+
+  <h2>1. 我们收集哪些数据</h2>
+  <table>
+    <tr><th>类型</th><th>内容</th><th>存储</th><th>上传</th></tr>
+    <tr><td>AI 配置</td><td>API Key、API 地址、模型</td><td>浏览器本地</td><td>仅用于 AI 调用认证</td></tr>
+    <tr><td>学习数据</td><td>错题本、答题记录、知识库、报告</td><td>浏览器本地</td><td>❌ 不上传</td></tr>
+    <tr><td>AI 调用内容</td><td>出题/讲解请求与返回</td><td>不持久化</td><td>发送至你配置的 AI 服务商</td></tr>
+    <tr><td>使用日志</td><td>时间/类型/是否被拦截/长度</td><td>浏览器本地</td><td>❌ 不上传</td></tr>
+  </table>
+
+  <h2>2. 我们不做什么</h2>
+  <ul>
+    <li>不收集浏览历史、Cookie、表单输入</li>
+    <li>不追踪跨站行为，不推送广告</li>
+    <li>不将数据出售或共享给第三方广告商</li>
+    <li>不在无你主动操作时访问任何网页内容</li>
+  </ul>
+
+  <h2>3. 内容安全与日志</h2>
+  <p>对 AI 调用做基础敏感词过滤；使用日志仅含元数据（不含输入/输出原文），仅存本地，可在设置页清空。</p>
+
+  <h2>4. 数据控制</h2>
+  <ul>
+    <li>设置页「清空数据」可删除全部学习数据</li>
+    <li>设置页「导出数据」可备份本地数据</li>
+    <li>卸载插件即删除所有本地数据</li>
+  </ul>
+
+  <h2>5. 政策更新与联系</h2>
+  <p>重大变更会在设置页提示。完整版见 <a href="https://example.com/privacy" style="color:var(--brand-primary);">PRIVACY_POLICY.md</a>（商店页提供）。如有疑问，请通过插件商店页的开发者联系方式联系我们。</p>
+
+    <div class="brand-footer">
+    Powered by <a href="https://clawsjoy.com" target="_blank" rel="noopener">ClawsJoy</a><span class="dot">·</span><a href="https://clawsjoy.com" target="_blank" rel="noopener">clawsjoy.com</a>
+  </div>
+  <a class="back" href="options.html">← 返回设置</a>
+</div>
+<script>
+(async function() {
+  const r = await chrome.storage.local.get("theme_pref");
+  const pref = r.theme_pref || "system";
+  const dark = pref === "dark" || (pref === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="themes.css">
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; width: 340px; background: var(--bg-subtle); }
+  .header {
+    background: var(--brand-gradient);
+    color: var(--text-on-brand); padding: 16px; border-radius: 0 0 14px 14px;
+  }
+  .header h1 { font-size: 17px; }
+  .header p { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+  .body { padding: 12px; }
+  .warn {
+    background: var(--danger-bg); border: 1px solid var(--danger-border); color: var(--danger-text);
+    border-radius: 8px; padding: 10px 12px; font-size: 12.5px; margin-bottom: 10px;
+  }
+  .warn a { color: var(--danger); font-weight: 600; cursor: pointer; text-decoration: underline; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .item {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; cursor: pointer; transition: box-shadow 0.15s; text-align: left;
+  }
+  .item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .item .icon { font-size: 22px; }
+  .item .name { font-size: 13px; font-weight: 600; margin-top: 4px; }
+  .item .desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .footer { padding: 10px 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+  .footer a { font-size: 12px; color: var(--brand-primary); cursor: pointer; text-decoration: none; }
+  .stats { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; font-size: 12.5px; color: var(--text-secondary); }
+  .stats b { color: var(--brand-dark); }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎓 考研智复习</h1>
+    <p>AI 刷题 · 错题本 · 遗忘曲线复习</p>
+  </div>
+  <div class="body">
+    <div class="warn" id="noKeyWarn" style="display:none;">
+      ⚠️ 尚未配置 DeepSeek API Key，AI 功能暂不可用。<a id="goOptions">去设置 →</a>
+    </div>
+    <div class="stats" id="stats" style="display:none;"></div>
+    <div class="grid">
+      <div class="item" data-action="practice"><div class="icon">✍️</div><div class="name">开始练习</div><div class="desc">AI 按章节出题</div></div>
+      <div class="item" data-action="exam"><div class="icon">📝</div><div class="name">模拟考试</div><div class="desc">生成整卷计时作答</div></div>
+      <div class="item" data-action="errorbook"><div class="icon">📕</div><div class="name">错题本</div><div class="desc">遗忘曲线复习队列</div></div>
+      <div class="item" data-action="report"><div class="icon">📈</div><div class="name">学习报告</div><div class="desc">正确率趋势与弱项</div></div>
+      <div class="item" data-action="library"><div class="icon">📚</div><div class="name">知识库</div><div class="desc">网页抓取的知识点</div></div>
+      <div class="item" data-action="settings"><div class="icon">⚙️</div><div class="name">设置</div><div class="desc">API Key / 备考目标</div></div>
+    </div>
+  </div>
+  <div class="footer">
+    <a id="onboard">❓ 使用引导</a>
+    <span style="font-size:11px;color:var(--text-muted);">Powered by <a href="https://clawsjoy.com" target="_blank" rel="noopener" style="color:var(--brand-primary);">clawsjoy.com</a></span>
+    <a id="dashboard">📊 打开学习面板</a>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

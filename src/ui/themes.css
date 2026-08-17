@@ -1,0 +1,207 @@
+/* ── 主题系统：浅色(默认) / 深色，由 html[data-theme] 驱动 ── */
+:root {
+  /* 品牌 */
+  --brand-primary: #1e88e5;
+  --brand-dark: #1a237e;
+  --brand-gradient: linear-gradient(135deg, #1a237e, #1e88e5);
+
+  /* 背景层 */
+  --bg-body: #f5f7fb;
+  --bg-card: #ffffff;
+  --bg-hover: #eef2f7;
+  --bg-subtle: #f8fafc;
+  --bg-input: #ffffff;
+  --bg-tag: #eef2f7;
+
+  /* 文本 */
+  --text-primary: #1f2328;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+  --text-on-brand: #ffffff;
+
+  /* 边框 */
+  --border: #e5e7eb;
+  --border-input: #d1d5db;
+  --border-focus: #1e88e5;
+
+  /* 语义 */
+  --success: #16a34a;
+  --success-bg: #f0fdf4;
+  --success-border: #bbf7d0;
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+  --warning-border: #fed7aa;
+  --warning-text: #9a3412;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-text: #b91c1c;
+  --info: #1e88e5;
+  --info-bg: #f0f7ff;
+
+  /* 五段卡片 */
+  --sec-knowledge: #1e88e5; --sec-knowledge-bg: #f0f7ff;
+  --sec-mistake: #d97706;   --sec-mistake-bg: #fffbeb;
+  --sec-analysis: #16a34a;  --sec-analysis-bg: #f0fdf4;
+  --sec-pitfall: #dc2626;   --sec-pitfall-bg: #fef2f2;
+  --sec-related: #7c3aed;   --sec-related-bg: #f5f3ff;
+
+  /* 阴影 */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ── 深色主题 ─────────────────────────────────────────── */
+[data-theme="dark"] {
+  --brand-dark: #0f172a;
+  --brand-gradient: linear-gradient(135deg, #0f172a, #1e40af);
+
+  --bg-body: #111827;
+  --bg-card: #1f2937;
+  --bg-hover: #374151;
+  --bg-subtle: #1f2937;
+  --bg-input: #111827;
+  --bg-tag: #374151;
+
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+
+  --border: #374151;
+  --border-input: #4b5563;
+  --border-focus: #60a5fa;
+
+  --success: #4ade80;
+  --success-bg: #052e16;
+  --success-border: #166534;
+  --warning: #fbbf24;
+  --warning-bg: #431407;
+  --warning-border: #78350f;
+  --warning-text: #fdba74;
+  --danger: #f87171;
+  --danger-bg: #450a0a;
+  --danger-border: #7f1d1d;
+  --danger-text: #fca5a5;
+  --info: #60a5fa;
+  --info-bg: #082f49;
+
+  --sec-knowledge: #60a5fa; --sec-knowledge-bg: #082f49;
+  --sec-mistake: #fbbf24;   --sec-mistake-bg: #431407;
+  --sec-analysis: #4ade80;  --sec-analysis-bg: #052e16;
+  --sec-pitfall: #f87171;   --sec-pitfall-bg: #450a0a;
+  --sec-related: #a78bfa;   --sec-related-bg: #2e1065;
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ── 工具类（app.ts 动态渲染替代内联 style） ───────────── */
+/* 间距 */
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mb-6 { margin-bottom: 6px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-14 { margin-bottom: 14px; }
+.mb-16 { margin-bottom: 16px; }
+.m-2 { margin: 2px 0; }
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.gap-10 { gap: 10px; }
+.gap-12 { gap: 12px; }
+.center { text-align: center; }
+.space-between { justify-content: space-between; align-items: center; }
+.wrap { flex-wrap: wrap; }
+
+/* 字号 */
+.fs-11 { font-size: 11px; }
+.fs-12 { font-size: 12px; }
+.fs-12-5 { font-size: 12.5px; }
+.fs-13 { font-size: 13px; }
+.fs-13-5 { font-size: 13.5px; }
+.fs-14 { font-size: 14px; }
+.fs-15 { font-size: 15px; }
+.fs-18 { font-size: 18px; }
+
+/* 字重 */
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+
+/* 文本色 */
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-faint { color: var(--text-faint); }
+.text-danger { color: var(--danger); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-brand { color: var(--brand-primary); }
+.text-on-brand { color: var(--text-on-brand); }
+
+/* 状态框 */
+.answer-correct {
+  background: var(--success-bg); border: 1px solid var(--success-border);
+  color: var(--success); border-radius: 8px; padding: 10px 14px;
+}
+.answer-wrong {
+  font-size: 14px; font-weight: 700; color: var(--danger); margin-bottom: 10px;
+}
+.warn-inline { font-size: 13px; color: var(--warning); }
+.error-inline { color: var(--danger); }
+.empty-inline { color: var(--danger); }
+
+/* 五段卡片（数据属性驱动） */
+.sec-card {
+  border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
+  border: 1px solid transparent; border-left-width: 4px;
+}
+.sec-card[data-sec="考点"] { background: var(--sec-knowledge-bg); border-color: var(--sec-knowledge); border-left-color: var(--sec-knowledge); }
+.sec-card[data-sec="错因"] { background: var(--sec-mistake-bg); border-color: var(--sec-mistake); border-left-color: var(--sec-mistake); }
+.sec-card[data-sec="解析"] { background: var(--sec-analysis-bg); border-color: var(--sec-analysis); border-left-color: var(--sec-analysis); }
+.sec-card[data-sec="避坑"] { background: var(--sec-pitfall-bg); border-color: var(--sec-pitfall); border-left-color: var(--sec-pitfall); }
+.sec-card[data-sec="同类"] { background: var(--sec-related-bg); border-color: var(--sec-related); border-left-color: var(--sec-related); }
+.sec-card .sec-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.sec-card[data-sec="考点"] .sec-title { color: var(--sec-knowledge); }
+.sec-card[data-sec="错因"] .sec-title { color: var(--sec-mistake); }
+.sec-card[data-sec="解析"] .sec-title { color: var(--sec-analysis); }
+.sec-card[data-sec="避坑"] .sec-title { color: var(--sec-pitfall); }
+.sec-card[data-sec="同类"] .sec-title { color: var(--sec-related); }
+.sec-body { font-size: 13.5px; line-height: 1.8; color: var(--text-secondary); white-space: pre-wrap; }
+.sec-step { margin: 2px 0; }
+
+/* 科目按钮 */
+.subj-btn {
+  border: 1px solid var(--border-input); border-radius: 8px; padding: 8px 16px;
+  font-size: 13.5px; font-weight: 600; cursor: pointer; background: var(--bg-card); color: var(--text-secondary);
+}
+.subj-btn.active { background: var(--brand-primary); color: var(--text-on-brand); border-color: var(--brand-primary); }
+
+/* 科目栏容器 */
+.subject-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+
+/* 错题 chips 警告态 */
+.tag.warn { background: var(--danger-bg); border: 1px solid var(--danger-border); color: var(--danger-text); }
+
+/* 趋势条 */
+.trend-wrap { display: inline-block; margin-right: 14px; text-align: center; width: 36px; }
+.trend-track { height: 80px; display: flex; align-items: flex-end; }
+.trend-bar { width: 22px; background: var(--brand-primary); border-radius: 4px; }
+.trend-date { font-size: 11px; color: var(--text-muted); }
+
+/* 正确率大数字 */
+.score-num { font-size: 48px; font-weight: 800; color: var(--brand-dark); }
+.score-sub { font-size: 18px; color: var(--text-muted); margin-top: 6px; }
+
+/* 分隔线 */
+.divider-top { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 14px; }
+
+/* ── 品牌页脚 ─────────────────────────────────────────── */
+.brand-footer {
+  margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-muted); text-align: center;
+}
+.brand-footer a { color: var(--brand-primary); text-decoration: none; }
+.brand-footer a:hover { text-decoration: underline; }
+.brand-footer .dot { margin: 0 6px; opacity: .5; }

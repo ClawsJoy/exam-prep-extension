@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隐私政策 · 考研智复习</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f7fb; color: #1f2328; line-height: 1.8; padding: 40px 20px;
+  }
+  .container { max-width: 760px; margin: 0 auto; background: #fff; border-radius: 14px; padding: 40px 48px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  h1 { font-size: 26px; color: #1a237e; margin-bottom: 8px; }
+  .meta { font-size: 13.5px; color: #6b7280; margin-bottom: 24px; border-bottom: 1px solid #e5e7eb; padding-bottom: 16px; }
+  .lead { font-size: 15px; color: #374151; margin-bottom: 24px; }
+  h2 { font-size: 18px; color: #1e88e5; margin: 28px 0 10px; padding-left: 12px; border-left: 4px solid #1e88e5; }
+  p { margin: 8px 0; font-size: 14.5px; }
+  ul { padding-left: 24px; margin: 8px 0; }
+  li { font-size: 14.5px; margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th, td { border: 1px solid #e5e7eb; padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: #f0f4ff; color: #1a237e; font-weight: 600; }
+  a { color: #1e88e5; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: #1a237e; }
+  .footnote { margin-top: 28px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 13px; color: #6b7280; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔒 隐私政策</h1>
+  <div class="meta">生效日期：2026-08-16 · 适用范围：考研智复习 · AI刷题助手（Chrome 浏览器插件）</div>
+  <p class="lead">我们高度重视你的隐私。本插件遵循<strong>数据本地优先（Local-first）</strong>设计：除调用你主动配置的 AI 服务外，不向任何服务器上传你的数据。请阅读本政策了解我们如何处理你的信息。</p>
+
+  <h2>1. 我们收集哪些数据</h2>
+  <table>
+    <tr><th>数据类型</th><th>内容</th><th>存储位置</th><th>是否上传</th></tr>
+    <tr><td><strong>AI 配置</strong></td><td>你填写的 API Key、API 地址、模型名称</td><td>浏览器本地（chrome.storage.local）</td><td>❌ 仅在调用 AI 服务时用于认证，不上传到其他服务器</td></tr>
+    <tr><td><strong>学习数据</strong></td><td>错题本、答题记录、复习队列、知识库、学习报告</td><td>浏览器本地</td><td>❌ 不上传</td></tr>
+    <tr><td><strong>备考目标</strong></td><td>目标院校、专业课、章节、每日目标</td><td>浏览器本地</td><td>❌ 不上传</td></tr>
+    <tr><td><strong>AI 调用内容</strong></td><td>你发起的出题/讲解请求内容及 AI 返回内容</td><td>不持久化存储</td><td>✅ 发送至你配置的 AI 服务商（默认 DeepSeek）处理</td></tr>
+    <tr><td><strong>使用日志（元数据）</strong></td><td>调用时间、操作类型、是否被安全过滤、内容长度</td><td>浏览器本地</td><td>❌ 不上传</td></tr>
+  </table>
+
+  <h2>2. 数据的用途</h2>
+  <ul>
+    <li><strong>学习数据</strong>：仅用于本插件的核心功能——出题练习、错题管理、遗忘曲线复习提醒、学习报告生成。</li>
+    <li><strong>AI 调用内容</strong>：仅在调用 AI 服务时发送给对应服务商（默认 DeepSeek，见其 <a href="https://platform.deepseek.com/terms" target="_blank" rel="noopener">API 服务条款</a>），用于生成题目与讲解。</li>
+    <li><strong>使用日志</strong>：仅用于安全审计与故障排查（详见第 5 节）。</li>
+  </ul>
+
+  <h2>3. 我们<strong>不</strong>做什么</h2>
+  <ul>
+    <li>❌ 不收集你的浏览历史、Cookie、表单输入</li>
+    <li>❌ 不追踪你的跨站行为</li>
+    <li>❌ 不向你推送广告</li>
+    <li>❌ 不将你的数据出售或共享给任何第三方广告商</li>
+    <li>❌ 不在无你主动操作的情况下访问任何网页内容</li>
+  </ul>
+
+  <h2>4. 第三方服务</h2>
+  <ul>
+    <li><strong>AI 服务商（默认 DeepSeek）</strong>：当你发起 AI 调用时，你的请求内容会发送至你配置的 AI 服务商。请阅读 DeepSeek 的<a href="https://platform.deepseek.com/privacy" target="_blank" rel="noopener">隐私政策</a>了解其数据处理方式。</li>
+    <li>本插件<strong>不使用</strong>任何分析 SDK、统计服务或追踪脚本。</li>
+  </ul>
+
+  <h2>5. 内容安全与日志</h2>
+  <p>为履行内容安全义务，本插件：</p>
+  <ul>
+    <li>对 AI 调用输入/输出做<strong>基础敏感词过滤</strong>，拦截极端不当内容；</li>
+    <li>记录<strong>仅含元数据</strong>的使用日志（时间、类型、是否被拦截、内容长度），<strong>不记录输入/输出原文</strong>；</li>
+    <li>日志仅存浏览器本地，可随时在设置页清空。</li>
+  </ul>
+
+  <h2>6. 数据删除与控制</h2>
+  <p>你有完全的控制权：</p>
+  <ul>
+    <li>在设置页点击 <strong>"清空数据"</strong> 可删除全部学习数据；</li>
+    <li>在设置页点击 <strong>"导出数据"</strong> 可导出本地数据备份；</li>
+    <li>卸载插件即删除所有本地存储的数据；</li>
+    <li>API Key 可随时在设置页修改或清空。</li>
+  </ul>
+
+  <h2>7. 数据安全</h2>
+  <ul>
+    <li>数据仅存储在浏览器本地（chrome.storage.local），由浏览器沙箱保护；</li>
+    <li>API Key 通过 background service worker 转发，不暴露给普通网页；</li>
+    <li>我们建议你为 API Key 设置消费上限，并在不使用时删除。</li>
+  </ul>
+
+  <h2>8. 未成年人</h2>
+  <p>本插件面向考研备考用户（通常为成年人）。若你未满 18 周岁，请在监护人指导下使用。</p>
+
+  <h2>9. 政策更新</h2>
+  <p>我们可能不时更新本隐私政策。重大变更会在插件设置页显著位置提示。继续使用本插件即表示你接受更新后的政策。</p>
+
+  <h2>10. 联系我们</h2>
+  <p>如有隐私相关问题，请通过插件商店页面的开发者联系方式与我们联系。</p>
+
+  <div class="footnote">本政策为中文撰写，若与其他语言版本不一致，以中文版本为准。</div>
+</div>
+</body>
+</html>

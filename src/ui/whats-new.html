@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更新日志 · 考研智复习</title>
+<link rel="stylesheet" href="themes.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg-body); color: var(--text-primary); padding: 32px 20px; }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 24px; margin-bottom: 6px; }
+  .sub { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
+  .ver {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+  .ver .badge {
+    display: inline-block; background: var(--brand-primary); color: var(--text-on-brand);
+    border-radius: 6px; padding: 3px 10px; font-size: 13px; font-weight: 700;
+  }
+  .ver .date { float: right; font-size: 12.5px; color: var(--text-faint); line-height: 24px; }
+  .ver h2 { font-size: 16px; margin: 12px 0 8px; }
+  .ver ul { padding-left: 20px; }
+  .ver li { font-size: 13.5px; line-height: 1.8; color: var(--text-secondary); }
+  .ver li b { color: var(--brand-dark); }
+  .tag-new { background:var(--success-bg); color:var(--success-border); border-radius:4px; padding:1px 6px; font-size:11px; }
+  .tag-fix { background:var(--danger-bg); color:var(--danger-text); border-radius:4px; padding:1px 6px; font-size:11px; }
+  .tag-sec { background:var(--info-bg); color:var(--info); border-radius:4px; padding:1px 6px; font-size:11px; }
+  .back { display: inline-block; margin-top: 8px; color: var(--brand-primary); text-decoration: none; font-size: 14px; }
+  .back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔄 更新日志</h1>
+  <div class="sub">每一次升级，都是为了让你更高效地上岸。</div>
+
+  <div class="ver">
+    <span class="badge">v1.0.0</span><span class="date">2026-08-16</span>
+    <h2>🎉 首个正式版</h2>
+    <ul>
+      <li><span class="tag-new">新增</span> <b>✍️ 练习引擎</b> — AI 按章节出题，难度可调，即练即讲</li>
+      <li><span class="tag-new">新增</span> <b>📝 考试引擎</b> — 一键生成模拟试卷，倒计时作答、自动判卷</li>
+      <li><span class="tag-new">新增</span> <b>📕 记忆引擎</b> — 错题自动入库，艾宾浩斯遗忘曲线复习队列</li>
+      <li><span class="tag-new">新增</span> <b>📈 报告引擎</b> — 正确率趋势、薄弱知识点分析</li>
+      <li><span class="tag-new">新增</span> <b>🌐 网页划词收藏</b> — 任意网页右键「加入考研错题本」</li>
+      <li><span class="tag-sec">安全</span> 最小权限（仅 storage + contextMenus）+ AI 内容敏感词过滤</li>
+      <li><span class="tag-sec">隐私</span> 数据仅存本地，内置隐私政策与用户协议</li>
+    </ul>
+  </div>
+
+  <div class="ver">
+    <span class="badge">预告</span>
+    <h2>🚀 路线图（即将到来）</h2>
+    <ul>
+      <li>🧠 基于艾宾浩斯曲线的<b>智能组卷</b>——按遗忘度优先出题</li>
+      <li>🎤 AI 生成<b>记忆口诀</b>——复杂考点秒变顺口溜</li>
+      <li>📄 支持<b>CSV/PDF 文档导入</b></li>
+      <li>⌨️ 键盘快捷键与侧边栏交互优化</li>
+    </ul>
+  </div>
+
+    <div class="brand-footer">
+    Powered by <a href="https://clawsjoy.com" target="_blank" rel="noopener">ClawsJoy</a><span class="dot">·</span><a href="https://clawsjoy.com" target="_blank" rel="noopener">clawsjoy.com</a>
+  </div>
+  <a class="back" href="options.html">← 返回设置</a>
+</div>
+<script>
+(async function() {
+  const r = await chrome.storage.local.get("theme_pref");
+  const pref = r.theme_pref || "system";
+  const dark = pref === "dark" || (pref === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+})();
+</script>
+</body>
+</html>
